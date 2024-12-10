@@ -22,7 +22,7 @@ This is a back-end web application built using Flask, MySQL, and dotenv for mana
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/???.git
+   git clone https://github.com/Luc-1577/Doctor-Web.git
    ```
 
 2. Navigate into the project directory:
