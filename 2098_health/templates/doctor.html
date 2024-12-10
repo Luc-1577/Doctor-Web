@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/doctor.css')}}">
+
+</head>
+
+<body>
+    <div class="profile">
+        <div class="name">Dr. {{ name }}</div>
+    </div>
+    <button class="menu-icon" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar">
+        <div class="menu">
+            <button onclick="showContent('home')"><i class="fas fa-home"></i>Home</button>
+            <button onclick="showContent('settings')"><i class="fas fa-cog"></i>Settings</button>
+            <button onclick="showContent('logout')"><i class="fas fa-sign-out-alt"></i>Logout</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="home" class="content active">
+            <h1>Today's Appointments</h1>
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Pacient</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr data-id="{{ appointment.ID }}">
+                        <td>{{ appointment.ID }}</td>
+                        <td>{{ appointment.Pacient }}</td>
+                        <td>{{ appointment.Date }}</td>
+                        <td><button class="complete-btn" onclick="markAsDone({{ appointment.ID }})">Done</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+
+        <div id="settings" class="content">
+            <form class="form-btn" role="form" method="post" action="/doctor/update">
+                <h1>Change credentials</h1>
+                <label for="new_username">New username</label>
+                <input type="text" id="new_username" name="new_username" placeholder="...">
+                <label for="new_password">New password</label>
+                <input type="password" id="new_password" name="new_password" placeholder="...">
+                <button type="submit">Done</button>
+            </form>
+        </div>
+
+
+        <div id="logout" class="content">
+            <h1>Do you want to logout?</h1>
+            <form action="/logout">
+                <button type="submit">Yes</button>
+                <button type="button">No</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/doctor.js')}}"></script>
+
+</body>
+
+</html>

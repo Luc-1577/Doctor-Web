@@ -1,0 +1,1 @@
+INSERT INTO doctors (name, department, username, password) VALUES ("doctor's name", "the department", "username for login",  SHA2("password", 256))
