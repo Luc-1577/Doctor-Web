@@ -47,7 +47,9 @@ This is a back-end web application built using Flask, MySQL, and dotenv for mana
    DATABASE=your-database-name
    ```
 
-5. Run the Flask application:
+5. Read the `.md` files to create the database and register the doctors on MySQL.
+
+6. Run the Flask application:
 
    ```bash
    python app.py
